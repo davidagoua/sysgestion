@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration SOS caution{% endblock %}
+
+{% block body %}
+    {% block navbar %}
+    <div class="navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand white-text font-weight-bold" href="{{ url ('admin') }}">Administration</a>
+        <ul class="navbar-nav nav">
+            <li class="nav-item">
+                <a href="{{ url ('client_index') }}" class="nav-link"><span class="fa fa-users"></span>&nbsp;&nbsp;<span>Clients</span></a>
+            </li>
+        </ul>
+    </div>
+    {% endblock %}
+
+    <div class="container mt-4">
+    {% block content %}{% endblock %}
+    </div>
+
+{% endblock %}
+

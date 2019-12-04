@@ -1,0 +1,19 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Modifier le client{% endblock %}
+
+{% block content %}
+    <h1>Modification</h1>
+
+    <div class="w-50">
+        {{ include('client/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+        <div class="d-flex mt-3">
+            <a href="{{ path('client_index') }}" class="btn btn-sm btn-blue rounded-pill">Revenir a la liste</a>
+
+            {{ include('client/_delete_form.html.twig') }}
+        </div>
+
+    </div>
+
+{% endblock %}

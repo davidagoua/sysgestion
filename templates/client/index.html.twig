@@ -1,0 +1,57 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}gestion des clients{% endblock %}
+
+{% block content %}
+<div ng-app="app">
+
+    <h1>Liste des clients</h1>
+    <div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenoms</th>
+                <th>Date d'adhesion</th>
+                <th>Address</th>
+                <th>Actif</th>
+                <th>Commune</th>
+                <th>Solde</th>
+                <th>Contact</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.prenoms }}</td>
+                <td>{{ client.createAt ? client.createAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ client.address }}</td>
+                <td>{{ client.isActif ? 'Yes' : 'No' }}</td>
+                <td>{{ client.commune }}</td>
+                <td>{{ client.solde }}</td>
+                <td>{{ client.contact }}</td>
+                <td>
+                    <a href="{{ path('client_show', {'id': client.id}) }}"><span class="fa fa-eye"></span></a>
+                    <a href="{{ path('client_edit', {'id': client.id}) }}"><span class="fa fa-edit"></span></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">Aucun client</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('client_new') }}" class="btn btn-sm btn-blue rounded-pill">Nouveau client <span class="fa fa-plus"></span></a>
+</div>
+{% endblock %}
+
+{% block javascript %}
+
+let app = angular.module('app', [])
+
+{% endblock %}

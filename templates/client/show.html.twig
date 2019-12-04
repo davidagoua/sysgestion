@@ -1,0 +1,79 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Client-{{ client.id }}{% endblock %}
+
+{% block content %}
+    <h1>Details client</h1>
+
+    <table class="table">
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <div class="jumbotron">
+        <div class="d-flex align-items-center">
+            <div>
+                <span class="fa fa-user-circle black-ic fa-4x"></span>
+            </div>
+            <div class="ml-4 flex-grow-1">
+                <h3>{{ client.prenoms }} {{ client.nom }}</h3>
+            </div>
+            <div>
+                <a href="{{ path('client_index') }}" class="btn btn-sm btn-blue rounded-pill">back to list</a>
+
+                <a href="{{ path('client_edit', {'id': client.id}) }}" class="btn btn-sm btn-blue rounded-pill">edit</a>
+            </div>
+        </div>
+        <p></p>
+        <div class="d-flex">
+            <div class="w-50">
+                <table class="table">
+                    <tr>
+                        <th><b>Nom</b></th>
+                        <td>{{ client.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th><b>Prenoms</b></th>
+                        <td>{{ client.prenoms }}</td>
+                    </tr>
+                    <tr>
+                        <th><b>Date d'adhesion</b></th>
+                        <td>{{ client.createAt ? client.createAt|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th><b>Address</b></th>
+                        <td>{{ client.address }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w-50">
+                <table class="table">
+                    <tr>
+                        <th><b>Is_actif</b></th>
+                        <td>{{ client.isActif ? 'Yes' : 'No' }}</td>
+                    </tr>
+                    <tr>
+                        <th><b>Commune</b></th>
+                        <td>{{ client.commune }}</td>
+                    </tr>
+                    <tr>
+                        <th><b>Solde</b></th>
+                        <td>{{ client.solde }}</td>
+                    </tr>
+                    <tr>
+                        <th><b>Contact</b></th>
+                        <td>{{ client.contact }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div>
+            {{ include('client/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
